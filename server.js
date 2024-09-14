@@ -10,14 +10,15 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/myblogapp', {
+// mongodb://localhost:27017/myblogapp
+mongoose.connect('mongodb+srv://msaadrehman313:Pakyman123@cluster0.1gyhz.mongodb.net/myblogapp?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
 // Define Routes
-const blogRoutes = require('./server/models');
+const blogRoutes = require('./server/routes');
 app.use('/api/blogs', blogRoutes);
 
 app.listen(PORT, () => {
